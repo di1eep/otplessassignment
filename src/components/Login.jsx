@@ -10,7 +10,7 @@ const Login = () => {
   useEffect(() => {
     window.otpless = (otplessUser) => {
       console.log("User Info:", otplessUser);
-      alert("Login Successful!");
+      //alert("Login Successful!");
 
       if (otplessUser.token) {
         login(otplessUser.token);
