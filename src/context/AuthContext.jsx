@@ -5,17 +5,20 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("authToken") || null);
 
+
   useEffect(() => {
-    const storedToken = localStorage.getItem("authToken");
+    const storedToken = localStorage.getItem("authToken");    /
     if (storedToken) {
       setToken(storedToken);
     }
   }, []);
 
+
   const login = (newToken) => {
-    localStorage.setItem("authToken", newToken);
+    localStorage.setItem("authToken", newToken);    // savinf authtoken in local storage / we can save name etc 
     setToken(newToken);
   };
+
 
   const logout = () => {
     localStorage.removeItem("authToken");     // deleting the token in local storage
