@@ -7,15 +7,24 @@ const Login = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    window.otpless = (otplessUser) => {
-      console.log("User Info:", otplessUser);
-      //alert("Login Successful!");
 
-      if (otplessUser.token) {
+
+  
+  useEffect(() => {
+    const handleOtpless = (otplessUser) => {
+      console.log("User Info:", otplessUser);
+
+      if (otplessUser?.token) {
         login(otplessUser.token);
-        navigate("/home");
+        navigate("/home", { replace: true });
       }
+    };
+
+    window.otpless = handleOtpless;
+
+ 
+    return () => {
+      delete window.otpless;
     };
   }, [login, navigate]);
 
